@@ -1,28 +1,7 @@
-// window.onload = function() {
-//     var startPos;
-//     var geoSuccess = function(position) {
-//       startPos = position;
-//       document.querySelector('.out1').innerHTML = startPos.coords.latitude;
-//       document.querySelector('.out2').innerHTML = startPos.coords.longitude;
-//     };
-//     navigator.geolocation.getCurrentPosition(geoSuccess);
-  
-
-
 fetch('https://api.openweathermap.org/data/2.5/forecast?q=ekaterinburg&appid=19a3b1a922eb7ba794cadcb4786e6be4&lang=ru')
-    .then(function (resp) { return resp.json() })
+    .then(resp => resp.json())
     .then(function (data) {
-       
-
-        if (navigator.geolocation) {
-            console.log('Geolocation is supported!');
-          }
-          else {
-            console.log('Geolocation is not supported for this Browser/OS version yet.');
-          }
-          
-
-        let count = 0;
+       let count = 0;
         let index = 0;
         let weatherDegrees = document.querySelectorAll('.weather__deg');
         let weatherDate = document.querySelectorAll('.weather__date');
@@ -41,7 +20,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=ekaterinburg&appid=19a
     })
     .catch(function () {
     });
-  // };
+  
 
 
 
