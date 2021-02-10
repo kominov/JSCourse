@@ -13,17 +13,17 @@ function t1() {
             .then(data => {
                 resolve(data.text());
             })
-        });
-   
+    });
+
     let secondQuery = new Promise((resolve, reject) => {
         fetch('http://getpost.itgid.info/index2.php?auth=DdC33D7d2C2a7&action=2&name=mikhail')
             .then(data => {
                 resolve(data.text());
             })
-        });
-    
-    Promise.all([firstQuery,secondQuery]).then(value =>{
-        document.querySelector('.out-1').innerHTML =`${value[0]}<br>${value[1]}`;
+    });
+
+    Promise.all([firstQuery, secondQuery]).then(value => {
+        document.querySelector('.out-1').innerHTML = `${value[0]}<br>${value[1]}`;
     });
 }
 
@@ -43,10 +43,27 @@ document.querySelector('.b-1').onclick = t1;
 */
 
 function t2() {
+    let firstQuery = new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php?auth=DdC33D7d2C2a7&action=3&num1=10&num2=1')
+            .then(data => {
+                resolve(data.text());
+            });
+    });
+
+    let secondQuery = new Promise(resolve => {
+        fetch("http://getpost.itgid.info/index2.php?auth=DdC33D7d2C2a7&action=4&num1=10&num2=1")
+            .then(data => {
+                resolve(data.text());
+            });
+    });
+
+    Promise.all([firstQuery, secondQuery]).then(value => {
+        document.querySelector('.out-2').innerHTML = `${value[0]}<br>${value[1]}`;
+    })
 
 }
 
-// ваше событие здесь!!!
+document.querySelector('.b-2').onclick = t2;
 
 
 // Task 3 ============================================
@@ -63,10 +80,25 @@ function t2() {
                  */
 
 function t3() {
-
+    let firstQuery = new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php?auth=DdC33D7d2C2a7&action=5')
+            .then(data => {
+                resolve(data.text());
+            });
+    });
+    let secondQuery = new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php?auth=DdC33D7d2C2a7&action=6&num1=10&num2=1')
+            .then(data => {
+                resolve(data.text());
+            });
+    });
+    Promise.all([firstQuery, secondQuery])
+        .then(value => {
+            document.querySelector('.out-3').innerHTML = `${value[0]}<br>${value[1]}`;
+        })
 }
 
-// ваше событие здесь!!!
+document.querySelector('.b-3').onclick = t3;
 
 
 // Task 4 ============================================
@@ -83,10 +115,27 @@ function t3() {
 */
 
 function t4() {
+    let firstQuery = new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php?auth=DdC33D7d2C2a7&action=7')
+            .then(data => {
+                resolve(data.text());
+            });
+    });
+    console.log(firstQuery);
+    let secondQuery = new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php?auth=DdC33D7d2C2a7&action=8&year=1989')
+            .then(data => {
+                resolve(data.text());
+            });
+    });
+    Promise.all([firstQuery, secondQuery])
+        .then(value => {
+            document.querySelector('.out-4').innerHTML = `${value[0]}<br>${value[1]}`;
+        });
 
 }
 
-// ваше событие здесь!!!
+document.querySelector('.b-4').onclick = t4;
 
 // Task 5 ============================================
 /*  
@@ -99,10 +148,39 @@ POST запрос на сайт http://getpost.itgid.info/index2.php. В кач�
 */
 
 function t5() {
+    let firstQuery = new Promise((resolve, reject) => {
+        fetch('http://getpost.itgid.info/index2.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: "auth=DdC33D7d2C2a7&action=1"
+        })
+            .then(data => {
+                resolve(data.text());
+                reject('hsdjs');
+            });
 
+    });
+    console.log(firstQuery)
+    let secondQuery = new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'auth=DdC33D7d2C2a7&action=2&name=mikhail'
+        })
+            .then(data => {
+                resolve(data.text());
+            });
+    });
+    Promise.all([firstQuery, secondQuery])
+        .then(value => {
+            document.querySelector('.out-5').innerHTML = `${value[0]}<br>${value[1]}`;
+        })
 }
-
-// ваше событие здесь!!!
+document.querySelector('.b-5').onclick = t5;
 
 // Task 6 ============================================
 /* 
@@ -120,10 +198,37 @@ function t5() {
 */
 
 function t6() {
-
+    let firstQuery = new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'auth=DdC33D7d2C2a7&action=3&num1=34&num2=2',
+        })
+            .then(data => {
+                resolve(data.text());
+            })
+    });
+    let secondQuery = new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'auth=DdC33D7d2C2a7&action=4&num1=34&num2=2',
+        })
+            .then(data => {
+                resolve(data.text());
+            })
+    })
+    Promise.all([firstQuery, secondQuery])
+        .then(value => {
+            document.querySelector('.out-6').innerHTML = `${value[0]}<br>${value[1]}`;
+        })
 }
 
-// ваше событие здесь!!!
+document.querySelector('.b-6').onclick = t6;
 
 
 // Task 7 ============================================
@@ -135,13 +240,41 @@ function t6() {
 Добавьте параметр num1 и num2 содержащие числа. Если все сделано верно, сервер вернет большее число.</p>
 <p>Два запроса объедините с помощью promiseAll.
 Выведите в out-7 результат. Запускаться функция должна по нажатию b-7. </p>
-
+ 
 */
 
 function t7() {
-
+    let firstQuery = new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'auth=DdC33D7d2C2a7&action=5',
+        })
+            .then(data => {
+                resolve(data.text());
+            })
+    });
+    let secondQuery = new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'auth=DdC33D7d2C2a7&action=6&num1=34&num2=2',
+        })
+            .then(data => {
+                resolve(data.text());
+            })
+    })
+    Promise.all([firstQuery, secondQuery])
+        .then(value => {
+            document.querySelector('.out-7').innerHTML = `${value[0]}<br>${value[1]}`;
+        })
 }
 
+document.querySelector('.b-7').onclick = t7;
 // ваше событие здесь!!!
 
 // Task 8 ============================================
@@ -158,8 +291,34 @@ function t7() {
 */
 
 function t8() {
-
+    let firstQuery = new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'auth=DdC33D7d2C2a7&action=7',
+        })
+            .then(data => {
+                resolve(data.text());
+            })
+    });
+    let secondQuery = new Promise(resolve => {
+        fetch('http://getpost.itgid.info/index2.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'auth=DdC33D7d2C2a7&action=8&year=1989',
+        })
+            .then(data => {
+                resolve(data.text());
+            })
+    })
+    Promise.all([firstQuery, secondQuery])
+        .then(value => {
+            document.querySelector('.out-8').innerHTML = `${value[0]}<br>${value[1]}`;
+        })
 }
 
-// ваше событие здесь!!!
-
+document.querySelector('.b-8').onclick = t8;
